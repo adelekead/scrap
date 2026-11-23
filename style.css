@@ -1,11 +1,14 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body Styling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -13,7 +16,6 @@ body {
   color: #333;
 }
 
-/* Header */
 header {
   background: linear-gradient(135deg, #4a90e2, #0073e6);
   color: white;
@@ -31,11 +33,16 @@ header p {
   margin-bottom: 1rem;
 }
 
-/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 1rem;
   font-weight: bold;
   transition: color 0.3s ease;
 }
@@ -44,7 +51,12 @@ nav a:hover {
   color: #ffdd57;
 }
 
-/* Sections */
+nav a:focus-visible,
+a:focus-visible {
+  outline: 3px solid #ffdd57;
+  outline-offset: 3px;
+}
+
 section {
   padding: 2rem;
   max-width: 900px;
@@ -59,13 +71,18 @@ section h2 {
   padding-bottom: 0.3rem;
 }
 
-/* Project Cards */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .project-card {
   background: white;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 1rem;
-  margin: 1rem 0;
+  padding: 1.25rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
@@ -74,12 +91,24 @@ section h2 {
   transform: translateY(-5px);
 }
 
-/* Contact Section */
+.project-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.project-card p {
+  margin-bottom: 1rem;
+}
+
+.project-card a,
+#contact a {
+  color: #0073e6;
+  font-weight: bold;
+}
+
 #contact p {
   font-size: 1.1rem;
 }
 
-/* Footer */
 footer {
   background: #333;
   color: white;
@@ -87,44 +116,38 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
 }
-.project-card.active {
-  border: 2px solid #0073e6;
-  background-color: #f0f8ff;
-}
-header img {
+
+.profile-placeholder {
+  display: grid;
+  place-items: center;
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 3px solid white;
   margin-bottom: 1rem;
+  margin-inline: auto;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 2.5rem;
+  font-weight: bold;
 }
+
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.8rem;
   }
-  nav a {
-    display: block;
-    margin: 0.5rem 0;
+
+  section {
+    padding: 1.5rem 1rem;
   }
 }
-body.dark {
-  background-color: #121212;
-  color: #f0f0f0;
-}
-#projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-header img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;   /* makes it circular */
-  border: 3px solid white;
-  margin-bottom: 1rem;
-  object-fit: cover;    /* ensures the image fits nicely */
-}
-header img:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .project-card,
+  nav a {
+    transition: none;
+  }
 }
